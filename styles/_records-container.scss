@@ -1,0 +1,196 @@
+.records-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    @media only screen and (max-width: 768px) {
+        gap: 2rem;
+    }
+    @media only screen and (max-width: 480px) {
+        gap: 1rem;
+    }
+
+    h1 {
+        text-shadow: 3px -3px 7px $blue;
+        text-transform: uppercase; 
+        font-size: 48px;
+        letter-spacing: 0.2em;
+        @media only screen and (max-width: 480px) {
+            font-size: 36px;
+        }
+    }
+
+    table {
+        width: 100%;
+        border-spacing: 10px;
+        font-size: 22px;
+        font-weight: 700;
+        @media only screen and (max-width: 480px) {
+            font-size: 16px;
+        }
+
+        td:first-child {
+            text-align: center;
+        }
+
+        td:last-child {
+            text-align: end;
+        }
+    }
+
+    .modal-overlay {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Montserrat", sans-serif;
+        color: white;
+        background: rgba(0, 0, 0, 0.7);
+
+        .modal-window {
+            width: 400px;
+            max-width: calc(100% - 2rem);
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+            @media only screen and (max-width: 480px) {
+                gap: 1rem;
+            }
+
+            p {
+                margin: 0;
+                text-align: center;
+                font-weight: 700;
+                font-size: 28px;
+                @media only screen and (max-width: 480px) {
+                    font-size: 18px;
+                }
+            }
+        
+            input,
+            button {
+                border-radius: 5px;
+                padding: 10px;
+                font-size: 22px;
+                @media only screen and (max-width: 480px) {
+                    font-size: 16px;
+                }
+            }
+
+            input:focus {
+                outline: none;
+            }
+
+            button {
+                position: relative;
+                border: none;
+                overflow: hidden;
+                font-weight: 700;
+                cursor: pointer;
+                color: $pink;
+                background-color: transparent;
+                transition: color background-color 1s ease;
+
+                span {
+                    display: inline-block;
+                    position: absolute;
+                    transition: 1s ease;
+
+                    &:nth-child(1) {
+                        top: 0;
+                        left: -100%;
+                        width: 100%;
+                        height: 2px;
+                        background: linear-gradient(90deg, transparent, $pink);
+                        transition-delay: 0.4s;
+                    }
+
+                    &:nth-child(2) {
+                        top: -100%;
+                        right: 0;
+                        width: 2px;
+                        height: 100%;
+                        background: linear-gradient(180deg, transparent, $pink);
+                    }
+
+                    &:nth-child(3) {
+                        bottom: 0;
+                        right: -100%;
+                        width: 100%;
+                        height: 2px;
+                        background: linear-gradient(270deg, transparent, $pink);
+                        transition-delay: 0.4s;
+                    }
+
+                    &:nth-child(4) {
+                        bottom: -100%;
+                        left: 0;
+                        width: 2px;
+                        height: 100%;
+                        background: linear-gradient(0, transparent, $pink);
+                    }
+                }
+
+                &:hover {
+                    box-shadow: 0 0 10px $pink,
+                                0 0 40px $pink,
+                                0 0 80px $pink;
+                    color: $white;
+                    background: $pink;
+                    transition-delay: 0.8s;
+
+                    span {
+                        &:nth-child(1) {
+                            left: 100%;
+                        }
+                        &:nth-child(2) {
+                            top: 100%;
+                        }
+                        &:nth-child(3) {
+                            right: 100%;
+                        }
+                        &:nth-child(4) {
+                            bottom: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+    .loading-indicator {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+} 

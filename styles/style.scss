@@ -1,0 +1,50 @@
+@import 'var';
+@import 'normalize';
+@import 'main-container';
+@import 'header';
+@import 'footer';
+@import 'game-container';
+@import 'control-container';
+@import 'error-container';
+@import 'records-container';
+@import 'animation';
+
+
+body {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    color: $white;
+
+    .app {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        .center {
+            width: 1280px;
+            max-width: calc(100% - 2rem);
+            margin: 0 auto;
+        }
+
+        .main-content {
+            height: 80vh;
+            flex-grow: 1;
+        }
+
+        .video-background {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .pink {
+            color: $pink;
+        }
+    }
+}
+
