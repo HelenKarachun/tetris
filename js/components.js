@@ -23,7 +23,7 @@ class Footer extends Component {
         <footer class="center ${this.className}">
           <address class="author-info">
           <p>&#169; Карачун Елена, 2025</p>
-          <a href="#"><img src="./images/github.svg" alt="sound" width="32" height="32" title="Посмотреть проект на GitHub"></a>
+          <a href="https://github.com/HelenKarachun/tetris"><img src="./images/github.svg" alt="sound" width="32" height="32" title="Посмотреть проект на GitHub"></a>
           </address>
         </footer>`;
   }
