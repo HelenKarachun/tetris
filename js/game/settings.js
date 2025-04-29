@@ -10,12 +10,12 @@ export let finishSpeedIndex = 45;
 
 export const initialLevelValue = 1;
 export const initialScoreValue = 0;
-export const droppedRowsNeededForNextLevel = 5;
+export const droppedRowsNeededForNextLevel = 30;
 export const dropSound = new Audio("./audio/figure-drop.mp3");
 export const scoreForRows = {
-  oneDroppedRow: 100, 
+  oneDroppedRow: 100,
   twoDroppedRows: 300,
-  threeDroppedRows: 700, 
+  threeDroppedRows: 700,
   fourDroppedRows: 1500,
 };
 

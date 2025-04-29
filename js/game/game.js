@@ -32,8 +32,8 @@ export function game() {
 
     updateScoreAndLevel(obj);
 
-    for (let row = 0; row < 20; row++) {
-      for (let column = 0; column < 10; column++) {
+    for (let row = 0; row < obj.row; row++) {
+      for (let column = 0; column < obj.column; column++) {
         if (obj.field[row][column]) {
           drawSquare(
             obj.ctx,

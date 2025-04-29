@@ -17,6 +17,8 @@ export default class Tetris {
   constructor(elem) {
     this.canvas = elem;
     this.ctx = this.canvas.getContext("2d");
+    this.row = fieldRows;
+    this.column = fieldColumns;
     this.startSpeedIndex = startSpeedIndex;
     this.finishSpeedIndex = finishSpeedIndex;
     this.animationID = null;
@@ -30,8 +32,8 @@ export default class Tetris {
 
   init() {
     this.squareSize = squareSize;
-    this.canvas.width = this.squareSize * fieldColumns;
-    this.canvas.height = this.squareSize * fieldRows;
+    this.canvas.width = this.squareSize * this.column;
+    this.canvas.height = this.squareSize * this.row;
     this.canvas.style.aspectRatio = `${this.canvas.width}/${this.canvas.height}`;
     this.canvas.tabIndex = 0;
     this.field = this.getFieldArray();
@@ -39,9 +41,9 @@ export default class Tetris {
 
   getFieldArray() {
     const matrix = [];
-    for (let row = 0; row < fieldRows; row++) {
+    for (let row = 0; row < this.row; row++) {
       matrix[row] = [];
-      for (let col = 0; col < fieldColumns; col++) {
+      for (let col = 0; col < this.column; col++) {
         matrix[row][col] = 0;
       }
     }
@@ -53,7 +55,7 @@ export default class Tetris {
     const currentFigure = this.getRandomFigure(allFigures);
     const figureMatrix = figures[currentFigure];
 
-    const column = fieldColumns / 2 - Math.floor(figureMatrix.length / 2);
+    const column = this.column / 2 - Math.floor(figureMatrix.length / 2);
     const row = initialPositionOfFigure;
 
     this.figure = {
@@ -144,7 +146,7 @@ export default class Tetris {
         if (this.figure.figureMatrix[row][column]) {
           if (
             this.figure.column + column < 0 ||
-            this.figure.column + column >= fieldColumns ||
+            this.figure.column + column >= this.column ||
             this.figure.row + row >= this.field.length
           ) {
             return false;
@@ -181,7 +183,7 @@ export default class Tetris {
 
   deleteFilledRows() {
     const filledRows = [];
-    for (let row = 0; row < fieldRows; row++) {
+    for (let row = 0; row < this.row; row++) {
       if (this.field[row].every((cell) => !!cell)) {
         filledRows.push(row);
       }
@@ -198,7 +200,7 @@ export default class Tetris {
       for (let row = rowForDelete; row > 0; row--) {
         this.field[row] = this.field[row - 1];
       }
-      this.field[0] = new Array(fieldColumns).fill(0);
+      this.field[0] = new Array(this.column).fill(0);
     });
   }
 
